@@ -7,9 +7,11 @@ yum -y update
 #curl --silent --location https://rpm.nodesource.com/setup_4.x | bash -
 #yum -y install nodejs
 
+/home/ec2-user
+
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
-. ~/.nvm/nvm.sh
+. /home/ec2-user/.nvm/nvm.sh
 
 nvm install node
 
