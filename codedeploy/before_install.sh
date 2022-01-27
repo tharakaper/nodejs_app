@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 #This script is executed before copying the source
 
@@ -7,15 +7,10 @@ yum -y update
 #curl --silent --location https://rpm.nodesource.com/setup_4.x | bash -
 #yum -y install nodejs
 
-cd /home/ec2-user
-
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-
-. /home/ec2-user/.nvm/nvm.sh
-
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 nvm install node
-
-node -e "console.log('Running Node.js ' + process.version)"
 
 npm install -g pm2
 pm2 update
