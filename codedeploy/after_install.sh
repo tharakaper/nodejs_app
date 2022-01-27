@@ -2,4 +2,4 @@
 
 # This script is executed after the source is copied to the instances
 cd /usr/cddemo/app_code
-npm install
+yum install nodejs npm -y
