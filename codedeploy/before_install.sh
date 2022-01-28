@@ -7,6 +7,8 @@ yum -y update
 #curl --silent --location https://rpm.nodesource.com/setup_4.x | bash -
 #yum -y install nodejs
 
+touch ~/.bash_profile
+
 curl --silent --location https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
 yum -y install nodejs
 
