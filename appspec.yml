@@ -7,8 +7,8 @@ files:
 permission:
   - object: /usr/cddemo/codedeploy
     pattern: "*.sh"
-    owner: ec2_user
-    group: ec2_user
+    owner: root
+    group: root
     mode: 775
     type:
     - file
