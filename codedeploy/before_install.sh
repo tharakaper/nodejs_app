@@ -9,11 +9,18 @@ sudo yum -y update
 
 sudo touch ~/.bash_profile
 
-sudo curl --silent --location https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
-sudo yum -y install nodejs
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+export NVM_DIR="/root/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-sudo npm install -g pm2
-sudo pm2 update
+. ~/.nvm/nvm.sh
+
+nvm install node
+
+node -e "console.log('Running Node.js ' + process.version)"
+
+npm install -g pm2
+pm2 update
 
 export app_root=/usr/cddemo
 if [ -d "app_root" ]; then
