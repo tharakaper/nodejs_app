@@ -36,5 +36,4 @@ variable "application_name" {
   type        = string
 #  default = "Sub-srv"
   description = "Short Name of the application"
-
 }
