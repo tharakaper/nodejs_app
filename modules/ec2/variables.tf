@@ -38,3 +38,22 @@ variable "instance_count" {
   type        = string
   description = "Number of required EC2 count"
 }
+variable "environment" {
+  type        = string
+#  default = "Subscription_service"
+  description = "Environment the application is provisioned"
+}
+variable "application_name" {
+  type        = string
+#  default = "Sub-srv"
+  description = "Short Name of the application"
+}
+variable "tags" {
+  type = map(any)
+  /*  default = {
+  "appid" = "SVC02107",
+  "dcl"   = "3",
+  "env"   = "TST"
+  } */
+  description = "CISO Mandatory Tags"
+}
