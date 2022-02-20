@@ -19,8 +19,8 @@ variable "tags" {
 }
 variable "environment" {
   type        = string
-#  default = "Subscription_service"
-  description = "Environment the application is provisioned"
+  default = "dev" #dev, prod [all simple]
+  description = "Environment the application is provisioned. This will be used to pick the ami"
 }
 variable "application_name" {
   type        = string
