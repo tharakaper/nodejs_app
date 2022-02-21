@@ -1,3 +1,5 @@
+#Variables related to Launch Configuration
+#
 variable "ami_prefix" {
   type        = string
   #default = "" #pcm-amzn2
@@ -48,6 +50,48 @@ variable "associate_public_ip_address" {
   type        = bool
   description = "Associate a public ip address with an instance in a VPC."
 }
+#
+# Variables relate to Auto Scaling Group
+#
+#
+variable "min_size" {
+  default = "0"
+  type        = string
+  description = "The minimum size of the Auto Scaling Group."
+}
+variable "max_size" {
+ default = "0"
+  type        = string
+  description = "The maximum size of the Auto Scaling Group."
+}
+variable "desired_capacity" {
+#  default = ""
+  type        = string
+  description = "EC2 instances that should be running"
+}
+variable "health_check_type" {
+  default = "ELB" #ELB, EC2
+  type        = string
+  description = "Define where Auto Scaling Group will rely on the health check to determine if an instance is healthy or not"
+}
+variable "target_group_arns" {
+#  default = ""
+  type        = string
+  description = "Values of aws_alb_target_group ARNs"
+}
+variable "health_check_grace_period" {
+  default = "300"
+  type        = string
+  description = "Time (in seconds) after instance comes into service before checking health"
+}
+variable "vpc_zone_identifier" {
+ # default = "" # [module.aws_subnet.example1.id,module.aws_subnet.example2.id]
+  type        = list
+  description = "A list of subnet IDs to launch resources in"
+}
+#
+#Common variables
+#
 variable "tags" {
   type = map(any)
   /*  default = {

@@ -40,6 +40,7 @@ resource "aws_launch_configuration" "launch_config" {
   )
 }
 
+
 resource "aws_autoscaling_group" "asg" {
 
   max_size                  = var.max_size
@@ -48,11 +49,8 @@ resource "aws_autoscaling_group" "asg" {
   health_check_type         = var.health_check_type
   desired_capacity          = var.desired_capacity
   launch_configuration      = aws_launch_configuration.launch_config.name
-  vpc_zone_identifier       = [aws_subnet.example1.id, aws_subnet.example2.id]
-
-  lifecycle {
-    create_before_destroy = true
-  }
+  vpc_zone_identifier       = var.vpc_zone_identifier
+  target_group_arns = var.target_group_arns
 
       tags = merge(
           var.tags,
