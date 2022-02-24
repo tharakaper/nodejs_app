@@ -27,7 +27,7 @@ resource "aws_launch_configuration" "launch_config" {
   user_data = var.user_data
   key_name = var.key_name
   associate_public_ip_address = var.associate_public_ip_address
-
+  security_groups = var.security_groups
   lifecycle {
     create_before_destroy = true
   }
@@ -43,16 +43,16 @@ resource "aws_launch_configuration" "launch_config" {
 
 resource "aws_autoscaling_group" "asg" {
 
+  launch_configuration      = aws_launch_configuration.launch_config.name
+  vpc_zone_identifier       = var.vpc_zone_identifier
+  target_group_arns = var.target_group_arns
   max_size                  = var.max_size
   min_size                  = var.min_size
   health_check_grace_period = var.health_check_grace_period
   health_check_type         = var.health_check_type
   desired_capacity          = var.desired_capacity
-  launch_configuration      = aws_launch_configuration.launch_config.name
-  vpc_zone_identifier       = var.vpc_zone_identifier
-  target_group_arns = var.target_group_arns
 
-      tags = merge(
+       tags = merge(
           var.tags,
           {
             Name = "asg-${var.environment}-${var.application_name}"

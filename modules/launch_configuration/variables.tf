@@ -50,6 +50,11 @@ variable "associate_public_ip_address" {
   type        = bool
   description = "Associate a public ip address with an instance in a VPC."
 }
+variable "security_groups" {
+  #default = ""
+  type        = string
+  description = " A list of associated security group IDS"
+}
 #
 # Variables relate to Auto Scaling Group
 #
